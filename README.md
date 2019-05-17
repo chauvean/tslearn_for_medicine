@@ -61,11 +61,16 @@ Calculating coeffs, then compare them to a treshold to evaluate if classificatio
 From an iteration to another We preserve clusters with their contains who have "most" of their samples having a high silouhette value. 
 Then we redo a k-means clustering on the remaining samples.
 
-We add a max number of iterations. Classification stops if nb itrations exceeded or if nb clusters and their size variations 
+We add a max number of iterations. Classification stops if nb iterations exceeded or if nb clusters and their size variations 
 stays below treshold.
 
 --> See code on my other computer 
 
+
+I am currently implementing a dictionnary solution. The keys are the possible combinations happening at a defined datefrom and value is the corresponding output. For instance with n=2 we have 2-sized combinations mapped to their output combination. Ex : A->B C->D in the dic A,C mapped to B,D. 
+For m-length precedence relationships we will search for matching outputs-inputs of different values. 
+
+The problem is that there are too many combinations. (sum over k ( n parmi length_of_date_k ))
 
 
 
