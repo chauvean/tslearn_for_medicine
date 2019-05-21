@@ -73,6 +73,10 @@ For m-length precedence relationships we will search for matching outputs-inputs
 The problem is that there are too many combinations. (sum over k ( n parmi length_of_date_k ))
 
 
+Dictionnary_version :
+
+Filter by patient and datefrom (amelioration by delta_T0 ordering).
+I can find n-length sequences between two dates each patients. 
 
 
 
