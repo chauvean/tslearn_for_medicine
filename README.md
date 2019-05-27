@@ -78,7 +78,11 @@ Dictionnary_version :
 Filter by patient and datefrom (amelioration by delta_T0 ordering).
 I can find n-length sequences between two dates each patients. 
 
+Clusterisation between t0's or datefrom and dateto, not really possible with the evaluation because we have different rates ( HBL, BLAST, BLA...) which are not really comparable to eachother.
+Use kernel density estimator ? To get a distance with different types variables ?
 
+Coincidences :
+The process is similar to precedences. I clusterize the data by the t0.
 
 
 
