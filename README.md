@@ -84,6 +84,9 @@ Use kernel density estimator ? To get a distance with different types variables 
 Coincidences :
 The process is similar to precedences. I clusterize the data by the t0.
 
+Process to be followed :
+pattern_for_each_cluster_coin('fichier.xlsx') to clusterize, fill clusters, find collisions in the clusters. It appears that few collisions are found if we maximize the silouhette coefficients. I tried to take a treshold for the silouhette coeffs to still get an interesting one. ( 0.6, 0.7, 0.8).
+
 
 
 
