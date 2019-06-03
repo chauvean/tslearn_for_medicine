@@ -81,11 +81,13 @@ I can find n-length sequences between two dates each patients.
 Clusterisation between t0's or datefrom and dateto, not really possible with the evaluation because we have different rates ( HBL, BLAST, BLA...) which are not really comparable to eachother.
 Use kernel density estimator ? To get a distance with different types variables ?
 
+CLustering with choose_timelapses : 
+at first I was calculating every possible cluster and their sil score. It was sometimes too long because most of the time I didn't have any clue about the possible nbr of clusters. Then I added a treshold to the sil score because we might not always need to reach the max sil score. It seems that after reaching amx sil score it decreases so we can stop the iterations after a decrease.
 Coincidences :
 The process is similar to precedences. I clusterize the data by the t0.
-
 Process to be followed :
 pattern_for_each_cluster_coin('fichier.xlsx') to clusterize, fill clusters, find collisions in the clusters. It appears that few collisions are found if we maximize the silouhette coefficients. I tried to take a treshold for the silouhette coeffs to still get an interesting one. ( 0.6, 0.7, 0.8).
+
 
 
 
