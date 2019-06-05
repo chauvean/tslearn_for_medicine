@@ -90,7 +90,9 @@ pattern_for_each_cluster_coin('fichier.xlsx') to clusterize, fill clusters, find
 
 
 
-
+Test graphics :
+COincidence silouhette score for increasing nb of samples an increasing number of clusters
+Same for kmeans calculation.
 
 
 
