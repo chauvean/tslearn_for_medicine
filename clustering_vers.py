@@ -232,6 +232,50 @@ def to_excel_complexity(df, output_file, step=1, first_index=0, last_index=0):
     df = pd.DataFrame(data, index=range(len(data)), columns=['time', 'medical statement count'])
     df.to_excel(output_file)
 
+def sil_and_cluster(timeserie, nb_clusters):
+    t1 = time()
+    cluster = TimeSeriesKMeans(n_clusters=nb_clusters, verbose=False, max_iter=5, metric="dtw", random_state=0).fit(
+        timeserie)
+    given_labels = []
+    for label in cluster.labels_:
+        if label not in given_labels:
+            given_labels.append(label)
+    if len(given_labels) > 1 and _check_no_empty_cluster(cluster.labels_, nb_clusters):
+        sil = silhouette_score(timeserie, cluster.labels_)
+        t2 = time()
+        print("a")
+        print(t2 - t1)
+        return cluster, sil
+    else:
+        return 1, 0
+
+
+
+def sil_and_cluster_threaded(timeserie, nb_clusters, result, i):
+    result[i] = sil_and_cluster(timeserie, nb_clusters)
+
+def choose(df, wanted_clusters):
+    l = []
+    array = get_infos(df, 'delta_T0', False)
+    ndarray = [[el] for el in array]
+    timeserie = to_time_series_dataset(ndarray)
+    for nb_cluster in wanted_clusters:
+        l.append([sil_and_cluster(timeserie, nb_cluster)])
+    return l
+
+
+def choose_threaded(df, wanted_clusters):
+    l = []
+    array = get_infos(df, 'delta_T0', False)
+    ndarray = [[el] for el in array]
+    timeserie = to_time_series_dataset(ndarray)
+    threads = [Thread() for _ in range(len(wanted_clusters))]
+    results = [[] for _ in range(len(wanted_clusters))]
+    for i in range(len(wanted_clusters)):
+        threads[i] = Thread(target=sil_and_cluster_threaded, args=(timeserie, wanted_clusters[i], results, i))
+        threads[i].start()
+    for i in range(len(wanted_clusters)):
+        threads[i].join()
 
 def main():
     # ti = time()
