@@ -1,5 +1,10 @@
 # tslearn_for_medicine
 
+My code: 
+
+
+
+
 Raw input : 
 array of values transformed in tslearn compatible time  serie. 
 ex : bla++, bla-, blast+, bla++ etc...
